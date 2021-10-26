@@ -1,6 +1,6 @@
 import React from 'react';
-import './index.css';
-import logo from './assets/logo.png';
+import './Header.css';
+import logo from '../../assets/logo.png';
 import { VscArrowSmallRight } from "react-icons/vsc";
 
 
