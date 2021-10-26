@@ -1,6 +1,5 @@
 .app {
     background-color: #454545;
-    width: 450px;
     min-height: 200px;
     height: min-content;
     border-radius: 15px;
@@ -26,12 +25,9 @@
     margin-bottom: 20px;
   }
   
-  .question-count span {
-    font-size: 28px;
-  }
-  
   .question-text {
     margin-bottom: 12px;
+    font-size: 18px;
   }
   
   /* ANSWERS/RIGHT SECTION */
