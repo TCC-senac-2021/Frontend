@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.css';
+import './Content.css';
 
 export default function Content() {
 	const questions = [
