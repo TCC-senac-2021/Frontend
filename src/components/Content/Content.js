@@ -4,39 +4,39 @@ import './Content.css';
 export default function Content() {
 	const questions = [
 		{
-			questionText: 'What is the capital of France?',
+			questionText: 'Qual a faculdade te da mais desconto na próxima rematrícula?',
 			answerOptions: [
-				{ answerText: 'New York', isCorrect: false },
-				{ answerText: 'London', isCorrect: false },
-				{ answerText: 'Paris', isCorrect: true },
-				{ answerText: 'Dublin', isCorrect: false },
+				{ answerText: 'PUCRS', isCorrect: false },
+				{ answerText: 'ULBRA', isCorrect: false },
+				{ answerText: 'SENAC', isCorrect: true },
+				{ answerText: 'UNIRITER', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Who is CEO of Tesla?',
+			questionText: 'Qual a faculdade te da mais desconto na próxima rematrícula?',
 			answerOptions: [
-				{ answerText: 'Jeff Bezos', isCorrect: false },
-				{ answerText: 'Elon Musk', isCorrect: true },
-				{ answerText: 'Bill Gates', isCorrect: false },
-				{ answerText: 'Tony Stark', isCorrect: false },
+				{ answerText: 'PUCRS', isCorrect: false },
+				{ answerText: 'ULBRA', isCorrect: false },
+				{ answerText: 'SENAC', isCorrect: true },
+				{ answerText: 'UNIRITER', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'The iPhone was created by which company?',
+			questionText: 'Qual a faculdade te da mais desconto na próxima rematrícula?',
 			answerOptions: [
-				{ answerText: 'Apple', isCorrect: true },
-				{ answerText: 'Intel', isCorrect: false },
-				{ answerText: 'Amazon', isCorrect: false },
-				{ answerText: 'Microsoft', isCorrect: false },
+				{ answerText: 'PUCRS', isCorrect: false },
+				{ answerText: 'ULBRA', isCorrect: false },
+				{ answerText: 'SENAC', isCorrect: true },
+				{ answerText: 'UNIRITER', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'How many Harry Potter books are there?',
+			questionText: 'Qual a faculdade te da mais desconto na próxima rematrícula?',
 			answerOptions: [
-				{ answerText: '1', isCorrect: false },
-				{ answerText: '4', isCorrect: false },
-				{ answerText: '6', isCorrect: false },
-				{ answerText: '7', isCorrect: true },
+				{ answerText: 'PUCRS', isCorrect: false },
+				{ answerText: 'ULBRA', isCorrect: false },
+				{ answerText: 'SENAC', isCorrect: true },
+				{ answerText: 'UNIRITER', isCorrect: false },
 			],
 		},
 	];
