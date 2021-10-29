@@ -3,11 +3,11 @@ import './Content.css';
 import TypeIcons from '../Utils/TypeIcons';
 
 
-export default function Content(props) {
+export default function Content() {
 	
 	const questions = [	
 		{
-			questionText: 'Qual a faculdade te da mais desconto na próxima rematrícula?',
+			questionText: 'Qual a faculdade que te da mais desconto na próxima rematrícula?',
 			answerOptions: [
 				{ answerText: 'PUCRS', isCorrect: false },
 				{ answerText: 'ULBRA', isCorrect: false },
@@ -16,7 +16,7 @@ export default function Content(props) {
 			],
 		},
 		{
-			questionText: 'Qual a faculdade te da mais desconto na próxima rematrícula?',
+			questionText: 'Qual a faculdade que te da mais desconto na próxima rematrícula?',
 			answerOptions: [
 				{ answerText: 'PUCRS', isCorrect: false },
 				{ answerText: 'ULBRA', isCorrect: false },
@@ -25,7 +25,7 @@ export default function Content(props) {
 			],
 		},
 		{
-			questionText: 'Qual a faculdade te da mais desconto na próxima rematrícula?',
+			questionText: 'Qual a faculdade que te da mais desconto na próxima rematrícula?',
 			answerOptions: [
 				{ answerText: 'PUCRS', isCorrect: false },
 				{ answerText: 'ULBRA', isCorrect: false },
@@ -34,7 +34,7 @@ export default function Content(props) {
 			],
 		},
 		{
-			questionText: 'Qual a faculdade te da mais desconto na próxima rematrícula?',
+			questionText: 'Qual a faculdade que te da mais desconto na próxima rematrícula?',
 			answerOptions: [
 				{ answerText: 'PUCRS', isCorrect: false },
 				{ answerText: 'ULBRA', isCorrect: false },
@@ -49,18 +49,24 @@ export default function Content(props) {
 	const [showScore, setShowScore] = useState(false);
 	const [showElement, setShowElement] = useState(false);
 	const [showAvatar, setShowAvatar] = useState(true)
-	const [type] = useState();
+	const [type, setType] = useState(0);
 
 	const man = 'Homen';
 	const woman = 'Mulher';
 	const other = 'Outros';
 
-	const handleAvatar = (index) => {
+	const notCounpon = 'Você não acertou nenhuma pergunta, tente jogar outra vez!'
+	const couponOne = "Parabéns, Você recebeu um cupom de 5% de desconto!  'JKLMSTUVX'"
+	const couponTwo = "Parabéns, Você recebeu um cupom de 10% de desconto! 'XVTUGBSKS'"
+	const couponTree = "Parabéns, Você recebeu um cupom de 5% de desconto! 'ABABCHDNS'"
+
+
+	const onSubmit = e => {
 		setShowElement(true);
 		setShowAvatar(false);
-		return index;
-	}
-  
+		e.preventDefault();
+	};
+	
 	const handleAnswerOptionClick = (isCorrect) => {
 		if (isCorrect) {
 			setScore(score + 1);
@@ -74,41 +80,41 @@ export default function Content(props) {
 		}
 	};
 
-	/* const setTypeIcon = handleAvatar(index);
-	console.log(setTypeIcon)
-	 */
+	console.log(setType.type);
+	
 	return (
 		<div className="content">
 
          {showAvatar ? (
 			<div className='avatar'>
+				<form onSubmit = {onSubmit}>
 				{
 					TypeIcons.map((icon, index) => ( //pego o incide do vetor e substituo a imagem
 					index > 0 && 
-					<button type="button" key={index} onClick={() => handleAvatar(index)}>
-					<span className="sex"> {index === 1 ? man : index === 2 ? woman : index === 3 ? other : ''} </span>
-					<img src={icon} alt="Avatar" className={type && type !== index && 'inative'}/> 
+					<button type="submit" key={index} onClick={() => setType.type = index }>
+						<span className="sex"> {index === 1 ? man : index === 2 ? woman : index === 3 ? other : ''} </span>
+						<img src={icon} alt="Avatar" className={type && type !== index && 'inative'}/> 
 					</button>
 					))
 					
 				}
+				</form>
 			</div>
 			) : ( null )}
 			{ showElement ? (
 			<div className='app'>
-
-					{ /*  TypeIcons.map((icon, index) => (
-						index > 0 && 
-						<img src={icon} alt="Avatar" className={type && type !== index && 'inative'}/> 
-                        )) 
-					*/ }  
-
 				{showScore ? (
 					<div className='score-section'>
-						Você marcou {score} de{questions.length}
+						<div> Você marcou {score} de {questions.length} </div>
+						<div> {score === 0 ? notCounpon : score === 1 ? couponOne : score === 2 ? couponOne : score === 3 ? couponTwo : score === 4 ? couponTree : '' } </div>
 					</div>
 				) : (
 					<>
+						{   TypeIcons.map((icon, i) => (
+							i === setType.type &&
+							<img src={icon} alt="Avatar" className="pulse"/> 
+                        	)) 
+						}  
 						<div className='question-section'>
 							<div className='question-count'>
 								<span>Question {currentQuestion + 1}</span>/{questions.length}
