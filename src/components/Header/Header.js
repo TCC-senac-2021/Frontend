@@ -8,7 +8,7 @@ export default function Header() {
 
 	return (
 		<div className='header'>
-		    <img src={logo} alt="Logo" />
+		    <img src={logo} alt="Logo" className="logo" />
              <div className="info">
              Complete o Quiz <VscArrowSmallRight/> Ganhe Pontos <VscArrowSmallRight/> Converta em Descontos!
              </div>
