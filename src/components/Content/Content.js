@@ -1,9 +1,29 @@
-import React, { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import './Content.css';
 import TypeIcons from '../Utils/TypeIcons';
+import Api from  '../../service/api';
+
+const Content = (props) => {
+
+	const [client, setClient] =  useState([]);
+	const [spinner, setSpinner ] = useState(true);
 
 
-export default function Content() {
+	async function loadClient(){
+        await Api.get(`/usuarios`)// interpola��o de acento
+        .then(response => {
+            setClient(response.data);
+             console.log(response.data); 
+        })
+	}
+	
+	async function loadQuestions(){
+        await Api.get(`/perguntas`)// interpola��o de acento
+        .then(response => {
+            setClient(response.data);
+             console.log(response.data); 
+        })
+    }
 	
 	const questions = [	
 		{
@@ -47,13 +67,16 @@ export default function Content() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [score, setScore] = useState(0);
 	const [showScore, setShowScore] = useState(false);
+	const [type, setType] = useState(0);
 	const [showElement, setShowElement] = useState(false);
 	const [showAvatar, setShowAvatar] = useState(true)
-	const [type, setType] = useState(0);
 
-	const man = 'Homen';
-	const woman = 'Mulher';
-	const other = 'Outros';
+	const onSubmit = e => {
+		setShowElement(true);
+		setShowAvatar(false);
+		e.preventDefault();
+	};
+
 
 	const notCounpon = 'Você não acertou nenhuma pergunta, tente jogar outra vez!'
 	const couponOne = "Parabéns, Você recebeu um cupom de 5% de desconto!  'JKLMSTUVX'"
@@ -61,11 +84,7 @@ export default function Content() {
 	const couponTree = "Parabéns, Você recebeu um cupom de 5% de desconto! 'ABABCHDNS'"
 
 
-	const onSubmit = e => {
-		setShowElement(true);
-		setShowAvatar(false);
-		e.preventDefault();
-	};
+
 	
 	const handleAnswerOptionClick = (isCorrect) => {
 		if (isCorrect) {
@@ -80,29 +99,32 @@ export default function Content() {
 		}
 	};
 
-	console.log(setType.type);
+	useEffect(() =>{
+        loadClient();
+		setTimeout(() => setSpinner(false), 1000)
+    }, [])
 	
-	return (
+	return  !spinner &&  (
 		<div className="content">
-
-         {showAvatar ? (
-			<div className='avatar'>
-				<form onSubmit = {onSubmit}>
-				{
-					TypeIcons.map((icon, index) => ( //pego o incide do vetor e substituo a imagem
-					index > 0 && 
-					<button type="submit" key={index} onClick={() => setType.type = index }>
-						<span className="sex"> {index === 1 ? man : index === 2 ? woman : index === 3 ? other : ''} </span>
-						<img src={icon} alt="Avatar" className={type && type !== index && 'inative'}/> 
-					</button>
-					))
-					
-				}
+		{showAvatar ? (
+			<div className={!spinner ? 'avatar fadein' : 'avatar'}>
+				<form onSubmit = {onSubmit} >
+					{ client.map(clients => (
+						<div className="bubble active"> Olá, {clients.nome.split(' ').slice(-1).join(' ')}. <br/>Clique em mim para jogar!</div>
+						))
+					}	
+					{ TypeIcons.map((icon, index) => (
+						index === 0 && 
+						<button type="submit" key={index} onClick={() => setType.type = index }>
+							<img src={icon} alt="Avatar" />
+						</button>
+						))
+					}
 				</form>
 			</div>
 			) : ( null )}
 			{ showElement ? (
-			<div className='app'>
+			<div className='app fade'>
 				{showScore ? (
 					<div className='score-section'>
 						<div> Você marcou {score} de {questions.length} </div>
@@ -110,8 +132,8 @@ export default function Content() {
 					</div>
 				) : (
 					<>
-						{   TypeIcons.map((icon, i) => (
-							i === setType.type &&
+						{   TypeIcons.map((icon, index) => (
+							index === 1 && 
 							<img src={icon} alt="Avatar" className="pulse"/> 
                         	)) 
 						}  
@@ -129,7 +151,9 @@ export default function Content() {
 					</>
 				)}
 			</div>
-			) : ( null )}
+		) : ( null )}
 		</div>
 	);
 }
+
+export default Content;

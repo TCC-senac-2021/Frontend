@@ -2,7 +2,7 @@
     background-color: #454545;
     min-height: 200px;
     height: min-content;
-    border-radius: 15px;
+    border-radius: 26.5px;
     padding: 20px;
     box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
     display: flex;
@@ -44,9 +44,9 @@ button {
   font-size: 16px;
   color: #ffffff;
   background-color: #252d4a;
-  border-radius: 15px;
+  border-radius: 26.5px;
   display: flex;
-  padding: 5px;
+  padding: 5px 0px 5px 10px;
   justify-content: flex-start;
   align-items: center;
   border: 5px solid #9999e1;
@@ -80,10 +80,11 @@ form {
 .avatar {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  height: 200px;
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
+
 .avatar button {
     border: none;
     background-color: transparent;
@@ -91,6 +92,8 @@ form {
     display: flex;
     flex-direction: column;
     font-size: 15px;
+    width: 50%;
+    padding-top: 30px;
 }
 .avatar button:hover {
     border: none;
@@ -107,9 +110,46 @@ form {
     opacity: 0.5;
 }
 
-.sex {
+.bubble {
   color: #454545;
+  font-size: 15px;
+  background: #999ee1;
+  border-radius: 26.5px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 90px;
+  width: 45%;
+  
+ 
 }
+
+.bubble.active:after,
+.bubble.active:before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 100%;
+  background: #999ee1;
+  position: absolute;
+  bottom: -7px;
+}
+
+.bubble.active:before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: #999ee1;
+  position: absolute;
+  bottom: -21px;
+}
+
+
 
 
 /** animação imagem **/
@@ -147,7 +187,58 @@ form {
   }
 }
 
+.fadein {
+  margin-top: 25px;
+  font-size: 21px;
+  text-align: center;
+  animation: fadein 2s;
+  -moz-animation: fadein 2s; /* Firefox */
+  -webkit-animation: fadein 2s; /* Safari and Chrome */
+  -o-animation: fadein 2s; /* Opera */
+}
 
+.fade {
+  margin-top: 25px;
+  font-size: 21px;
+  text-align: center;
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
+}
+
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
+}
 
 /** small device */
   @media(max-width: 800px) {
