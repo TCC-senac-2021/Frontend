@@ -1,5 +1,7 @@
 <h1 align="center"> Converta (Frontend) 🚀 Em construção... 🚧 </h1>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a8b6ba6d-7f8a-4b64-82c6-d7fb131021c5/deploy-status)](https://app.netlify.com/sites/converta-quizz/deploys)
+
 [Create React App](https://github.com/facebook/create-react-app).
 
 ## Preparando o ambiente
