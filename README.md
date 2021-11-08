@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a8b6ba6d-7f8a-4b64-82c6-d7fb131021c5/deploy-status)](https://app.netlify.com/sites/converta-quizz/deploys)
+
 <h1 align="center"> Converta (Frontend) 🚀 Em construção... 🚧 </h1>
 
 [Create React App](https://github.com/facebook/create-react-app).
@@ -16,5 +18,4 @@ Sem mais delongas, vamos ao conteúdo principal desse guia: configuração do se
 - [React](https://pt-br.reactjs.org/)
 - [Javascrip](https://www.javascriptlan.org/)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a8b6ba6d-7f8a-4b64-82c6-d7fb131021c5/deploy-status)](https://app.netlify.com/sites/converta-quizz/deploys)
 
