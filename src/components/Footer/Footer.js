@@ -5,7 +5,7 @@ import './Footer.css';
 function Footer () {
 
   return (
-    <div className='footer'>
+    <div className='footer fadein'>
         <div className="lgpd">
         Respeitamos a sua privacidade
         Ao navegar neste site, você aceita os cookies que usamos para melhorar sua experiência. Conheça nossa <Link to="/privacy" className="link"> Política de Privacidade</Link>

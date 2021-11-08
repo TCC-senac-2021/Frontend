@@ -11,14 +11,13 @@ h1 {
     text-align: center;
 }
 
-ul, li, span {
+ul, li {
     color: #252d4a;
     font-size: 12px;
-    padding-top: 20px;
+    padding: 0px;
     text-align: center;
     list-style-type: none;
-    width: 70%;
-    display: inline-table;
+    margin: 20px;
 }
 
 li {

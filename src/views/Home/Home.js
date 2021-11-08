@@ -1,5 +1,6 @@
 import React , { useState, useEffect } from 'react';
 import TypeIcons from '../../components/Utils/TypeIcons';
+import Loader from 'react-loader-spinner';
 import Api from  '../../service/api';
 import './Home.css';
 
@@ -7,10 +8,11 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Game from '../../components/Game/Game';
 
+
 const Home = () => {
 
 	const [client, setClient] =  useState([]);
-	const [spinner, setSpinner ] = useState(true);
+	const [loader, setLoader ] = useState(true);
 	const [showElement, setShowElement] = useState(false);
 	const [showAvatar, setShowAvatar] = useState(true);
 
@@ -27,22 +29,23 @@ const Home = () => {
 			await Api.get(`/usuarios`)// interpola��o de acento
 			.then(response => {
 				setClient(response.data);
-				console.log(response.data); 
+				setLoader(false);
+				// console.log(response.data); 
 			})
 		}
 
-
 		loadClient();
-		setTimeout(() => setSpinner(false), 1500);
 
 	}, [])
 	
 	
-	return  !spinner &&  (
+	return  (
 		<div className="content">
   			<Header />
+			{ loader ? (  <Loader type="Circles" color="#9999e1" height={150} width={150}/>
+			) : ( <> 
 			{showAvatar ? (
-				<div className={!spinner ? 'avatar fadein' : 'avatar'}>
+				<div className='avatar fadein'>
 			
 						{ client.map((clients, indice) => ( /* // retirar o indice e fa\er a validação depois	 */
 							indice === 0 && 
@@ -63,6 +66,7 @@ const Home = () => {
 				<Game />
 			) : ( null )}
 			<Footer />
+			</> )}
 		</div>
 	);
 }

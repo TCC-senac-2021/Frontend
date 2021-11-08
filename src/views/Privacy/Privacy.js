@@ -11,11 +11,11 @@ function Privacy () {
                   </div>
                   <ul>
                         <li> 1. Dados de fornecedores </li>
-                        <span>Ao utilizar os Serviços do, nossos parceiros concordam em agir com o consentimento de seus clientes para a utilização dos dados pessoais deles pelo Converta.</span>
+                        <span class="text">Ao utilizar os Serviços do, nossos parceiros concordam em agir com o consentimento de seus clientes para a utilização dos dados pessoais deles pelo Converta.</span>
                         <li> 2. Dados de parceiros </li>
-                        <span>São coletados seu nome; nome da empresa; identificadores de redes sociais; número(s) de telefone; endereço; ; e-mail...</span>
+                        <span class="text">São coletados seu nome; nome da empresa; identificadores de redes sociais; número(s) de telefone; endereço; e-mail...</span>
                         <li> 3. Dados de cookies e de navegação </li>
-                        <span>Um cookie é um arquivo de dados que pode conter um identificador único. Os cookies são enviados por um site para o seu navegador e armazenados em seu dispositivo. Nós atribuímos um cookie diferente para cada dispositivo que acessa nosso site. Utilizamos cookies para reconhecer o seu dispositivo e oferecer uma experiência personalizada em nossos sites ou Serviços, podendo ser utilizado como parte de nossos Serviços ou de parceiros.</span>
+                        <span class="text">Um cookie é um arquivo de dados que pode conter um identificador único. Os cookies são enviados por um site para o seu navegador e armazenados em seu dispositivo. Nós atribuímos um cookie diferente para cada dispositivo que acessa nosso site. Utilizamos cookies para reconhecer o seu dispositivo e oferecer uma experiência personalizada em nossos sites ou Serviços, podendo ser utilizado como parte de nossos Serviços ou de parceiros.</span>
                   </ul>
             </div>
 	);
