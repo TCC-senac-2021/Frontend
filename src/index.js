@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Header from './components/Header/Header';
-import Content from './components/Content/Content';
+import Routes from './routes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header/>
-    <Content/> 
+    <Routes />
   </React.StrictMode>,
   document.getElementById('root')
 );
