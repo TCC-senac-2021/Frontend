@@ -12,8 +12,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
 [NPM](https://www.npmjs.com/) OU [YARN](https://yarnpkg.com/)
 
-Sem mais delongas, vamos ao conteúdo principal desse guia: configuração do seu ambiente para o GAME Teremos três pilares pricipais
-**Instalação"**: 
+Sem mais delongas, vamos ao conteúdo principal desse guia: configuração do seu ambiente para o GAME Teremos três pilares:
 
 - [Visualstudio CODE](https://code.visualstudio.com/)
 - [React](https://pt-br.reactjs.org/)
