@@ -7,7 +7,7 @@ function Header () {
 
   return (
     <div className='header'>
-        <img src={logo} alt="Logo" className="logo" />
+        <button className="fix" onClick={() => window.location.reload(false)} ><img src={logo} alt="Logo" className="logo" /></button>
         <div className="info">
             Complete o Quiz <VscArrowSmallRight/> Ganhe Pontos <VscArrowSmallRight/> Converta em Descontos!
         </div>

@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+.linkBack {
+    color: #9999e1;
+    font-size: 12px;
+}
+
 h1 {
     color: #252d4a;
     font-size: 18px;

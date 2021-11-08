@@ -1,9 +1,12 @@
 import React from 'react';
+import { VscArrowLeft } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 import './Privacy.css';
 
 function Privacy () {
 	return (
             <div className="content">
+                  <Link to="/" className="linkBack"><VscArrowLeft/> Voltar pra Home</Link>
                   <h1 className="title">POLÍTICA DE COLETA DE DADOS CONVERTA</h1>
                   <div className="text">
                         Nós estamos preocupados com a forma como suas informações são usadas e compartilhadas, agradecemos sua confiança de que cuidaremos delas com atenção e sensatez. O presente documento demonstra como tratamos suas informações pessoais obtidas em web sites, serviços, lojas, aplicativos e parceiros.
@@ -11,7 +14,7 @@ function Privacy () {
                   </div>
                   <ul>
                         <li> 1. Dados de fornecedores </li>
-                        <span class="text">Ao utilizar os Serviços do, nossos parceiros concordam em agir com o consentimento de seus clientes para a utilização dos dados pessoais deles pelo Converta.</span>
+                        <span class="text">Ao utilizar os Serviços do Converta, nossos parceiros concordam em agir com o consentimento de seus clientes para a utilização dos dados pessoais deles pelo Converta.</span>
                         <li> 2. Dados de parceiros </li>
                         <span class="text">São coletados seu nome; nome da empresa; identificadores de redes sociais; número(s) de telefone; endereço; e-mail...</span>
                         <li> 3. Dados de cookies e de navegação </li>

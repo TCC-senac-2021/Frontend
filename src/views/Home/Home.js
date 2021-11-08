@@ -42,13 +42,13 @@ const Home = () => {
 	return  (
 		<div className="content">
   			<Header />
-			{ loader ? (  <Loader type="Circles" color="#9999e1" height={150} width={150}/>
+			{ loader ? (  <Loader type="Circles" height={150} width={150}/>
 			) : ( <> 
 			{showAvatar ? (
 				<div className='avatar fadein'>
 			
-						{ client.map((clients, indice) => ( /* // retirar o indice e fa\er a validação depois	 */
-							indice === 0 && 
+						{ client.map((clients, index) => ( /* // retirar o indice e fa\er a validação depois	 */
+							index === 0 && 
 							<div className="bubble active"> Olá, {clients.nome.split(' ').slice(-1).join(' ')}. <br/>Clique aqui para jogar!</div>
 							))
 						}	

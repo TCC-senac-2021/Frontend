@@ -69,6 +69,12 @@ form {
   margin-right: 15px;
 }
 
+svg {
+  fill: #9999e1 !important;
+  position: relative;
+  top: 3px;
+}
+
 .bubble {
   color: #454545;
   font-size: 15px;
@@ -82,7 +88,6 @@ form {
   height: 90px;
   width: 45%;
   
- 
 }
 
 .bubble.active:after,
