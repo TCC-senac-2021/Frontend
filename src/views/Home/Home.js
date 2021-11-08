@@ -1,5 +1,5 @@
 import React , { useState, useEffect } from 'react';
-import TypeIcons from '../../components/Utils/TypeIcons';
+import RobotIconColor from '../../assets/robot.png';
 import Loader from 'react-loader-spinner';
 import Api from  '../../service/api';
 import './Home.css';
@@ -46,20 +46,14 @@ const Home = () => {
 			) : ( <> 
 			{showAvatar ? (
 				<div className='avatar fadein'>
-			
 						{ client.map((clients, index) => ( /* // retirar o indice e fa\er a validação depois	 */
 							index === 0 && 
 							<div className="bubble active"> Olá, {clients.nome.split(' ').slice(-1).join(' ')}. <br/>Clique aqui para jogar!</div>
 							))
 						}	
-						{ TypeIcons.map((icon, index) => (
-							index === 0 && 
-							<button type="submit" key={index} onClick={handleClick}>
-								<img src={icon} alt="Avatar" className="pulse" />
-							</button>
-							))
-						}
-			
+						<button type="submit"onClick={handleClick}>
+							<img src={RobotIconColor} alt="Avatar" className="pulse" />
+						</button>			
 				</div>
 				) : ( null )}
 				{ showElement ? (

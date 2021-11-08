@@ -1,5 +1,5 @@
 import React , { useState } from 'react';
-import TypeIcons from '../../components/Utils/TypeIcons';
+import RobotIconWhite from '../../assets/robot_form.png';
 import './Game.css';
 
 function Game (props) {
@@ -76,11 +76,8 @@ function Game (props) {
         </div>
     ) : (
         <>
-            {   TypeIcons.map((icon, index) => (
-                index === 1 && 
-                <img src={icon} alt="Avatar" className="avatar-form"/> 
-                )) 
-            }  
+            <img src={RobotIconWhite} alt="Avatar" className="avatar-form"/> 
+             
             <div className='question-section'>
                 <div className='question-count'>
                     <span>Question {currentQuestion + 1}</span>/{questions.length}
