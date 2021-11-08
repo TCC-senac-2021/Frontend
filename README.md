@@ -1,4 +1,5 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a8b6ba6d-7f8a-4b64-82c6-d7fb131021c5/deploy-status)](https://app.netlify.com/sites/converta-quizz/deploys)
+[![@coreui react](https://img.shields.io/badge/@coreui%20-react-lightgrey.svg?style=flat-square)](https://github.com/coreui/react)
 
 <h1 align="center"> Converta (Frontend) 🚀 Em construção... 🚧 </h1>
 
