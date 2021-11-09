@@ -1,97 +1,89 @@
-import React , { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import RobotIconWhite from '../../assets/robot_form.png';
+import Loader from 'react-loader-spinner';
+import Api from  '../../service/api';
 import './Game.css';
 
-function Game (props) {
 
+function Game () {
+
+	const [questions, setQuestions] =  useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [score, setScore] = useState(0);
-    const [showScore, setShowScore] = useState(false); // é só uma variavel de estado pra exibir o resultado
+	const [showScore, setShowScore] = useState(false); // é só uma variavel de estado pra exibir o resultado
+	const [loader, setLoader ] = useState(true);
+	const counQuestions = [1,2,3,4]
+	const notCounpon = '??????????????'
 
-    const questions = [	
-		{
-			questionText: 'Qual a faculdade que te da mais desconto na próxima rematrícula?',
-			answerOptions: [
-				{ answerText: 'PUCRS', isCorrect: false },
-				{ answerText: 'ULBRA', isCorrect: false },
-				{ answerText: 'SENAC', isCorrect: true },
-				{ answerText: 'UNIRITER', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'Qual a faculdade que te da mais desconto na próxima rematrícula?',
-			answerOptions: [
-				{ answerText: 'PUCRS', isCorrect: false },
-				{ answerText: 'ULBRA', isCorrect: false },
-				{ answerText: 'SENAC', isCorrect: true },
-				{ answerText: 'UNIRITER', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'Qual a faculdade que te da mais desconto na próxima rematrícula?',
-			answerOptions: [
-				{ answerText: 'PUCRS', isCorrect: false },
-				{ answerText: 'ULBRA', isCorrect: false },
-				{ answerText: 'SENAC', isCorrect: true },
-				{ answerText: 'UNIRITER', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'Qual a faculdade que te da mais desconto na próxima rematrícula?',
-			answerOptions: [
-				{ answerText: 'PUCRS', isCorrect: false },
-				{ answerText: 'ULBRA', isCorrect: false },
-				{ answerText: 'SENAC', isCorrect: true },
-				{ answerText: 'UNIRITER', isCorrect: false },
-			],
-		},
-	];
-  
-
-	const notCounpon = 'Você não acertou nenhuma pergunta, tente jogar outra vez!'
-	const couponOne = "Parabéns, Você recebeu um cupom de 5% de desconto!  'JKLMSTUVX'"
-	const couponTwo = "Parabéns, Você recebeu um cupom de 10% de desconto! 'XVTUGBSKS'"
-	const couponTree = "Parabéns, Você recebeu um cupom de 5% de desconto! 'ABABCHDNS'"
-
-
-	const handleAnswerOptionClick = (isCorrect) => {
-		if (isCorrect) {
-			setScore(score + 1);
-		}
-
+	const handleAnswerOptionClick = () => {
 		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
+		if (nextQuestion < counQuestions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
 		}
 	};
 
+	useEffect(() => { 
+
+		async function loadarQuestions(){
+			await Api.post(`/enviopergunta`,{
+				idCampanha : 1 /** gambiarra pra pegar o id por enquanto */
+			}).then(response => {
+				setQuestions(response.data);
+				setLoader(false);
+			})
+		}
+		loadarQuestions();
+		
+	}, [])
+
+
   return (
+	loader ? (  <Loader type="Circles" height={150} width={150}/>
+	) : ( <> 
     <div className='app fade'>
     {showScore ? (
         <div className='score-section'>
-            <div> Você marcou {score} de {questions.length} </div>
-            <div> {score === 0 ? notCounpon : score === 1 ? couponOne : score === 2 ? couponOne : score === 3 ? couponTwo : score === 4 ? couponTree : '' } </div>
+            {/* <div> Você marcou {score} de {counQuestions.length} </div> */}
+            <div> {score === 0 ? notCounpon : '' } </div>
         </div>
     ) : (
         <>
+		
             <img src={RobotIconWhite} alt="Avatar" className="avatar-form"/> 
-             
-            <div className='question-section'>
-                <div className='question-count'>
-                    <span>Question {currentQuestion + 1}</span>/{questions.length}
-                </div>
-                <div className='question-text'>{questions[currentQuestion].questionText}</div>
-            </div>
-            <div className='answer-section'>
-                {questions[currentQuestion].answerOptions.map((answerOption) => (
+				<div className='question-section'>
+					<div className='question-count'>
+						<span>Pergunta {currentQuestion + 1}</span>
+					</div>
+						{ questions.map((question) => (
+							question.id === currentQuestion + 1 && 
+								<div className='question-text'>{question.textoPergunta}</div>
+							))
+						}
+				</div>
+				<div className='answer-section'>
+				{
+					questions.map((question) => (
+						question.id === currentQuestion + 1 &&
+						<>
+							<button onClick={() => handleAnswerOptionClick()}>{question.alternativa1}</button>
+							<button onClick={() => handleAnswerOptionClick()}>{question.alternativa2}</button>
+							<button onClick={() => handleAnswerOptionClick()}>{question.alternativa3}</button>
+							<button onClick={() => handleAnswerOptionClick()}>{question.alternativa4}</button>
+						</>
+					))
+				}
+
+               {/*  {questions[currentQuestion].answerOptions.map((answerOption) => (
                     <button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
-                ))}
+                ))} */}
             </div>
-        </>
+			
+		</>
     )}
 </div>
+</> )
    
   
   );

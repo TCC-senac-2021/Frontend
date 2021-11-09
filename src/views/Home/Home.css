@@ -11,6 +11,7 @@ button {
   align-items: center;
   border: 5px solid #9999e1;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 button:hover {

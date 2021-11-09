@@ -22,15 +22,14 @@ const Home = () => {
 		e.preventDefault();
 	};
 
-
-	useEffect(() => { // useEffect é chamado quando inicia a tela
+	useEffect(() => { // useEffect Ã© chamado quando inicia a tela
 
 		async function loadClient(){
-			await Api.get(`/usuarios`)// interpola��o de acento
+			await Api.get(`/usuarios`)// interpolaï¿½ï¿½o de acento
 			.then(response => {
 				setClient(response.data);
 				setLoader(false);
-				// console.log(response.data); 
+				
 			})
 		}
 
@@ -46,7 +45,7 @@ const Home = () => {
 			) : ( <> 
 			{showAvatar ? (
 				<div className='avatar fadein'>
-						{ client.map((clients, index) => ( /* // retirar o indice e fa\er a validação depois	 */
+						{ client.map((clients, index) => ( /* // retirar o indice e fa\er a validaÃ§Ã£o depois	 */
 							index === 0 && 
 							<div className="bubble active"> Olá, {clients.nome.split(' ').slice(-1).join(' ')}. <br/>Clique aqui para jogar!</div>
 							))
