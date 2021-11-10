@@ -9,7 +9,7 @@ function Game () {
 
 	const [questions, setQuestions] =  useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-	//const [score, setScore] = useState(0);
+	const [score] = useState(0);
 	const [showScore, setShowScore] = useState(false); // é só uma variavel de estado pra exibir o resultado
 	const [loader, setLoader ] = useState(true);
 	const counQuestions = [1,2,3,4]
