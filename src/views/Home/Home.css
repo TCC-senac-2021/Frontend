@@ -6,7 +6,7 @@ button {
   background-color: #252d4a;
   border-radius: 26.5px;
   display: flex;
-  padding: 5px 0px 5px 10px;
+  padding: 5px 10px 5px 10px;
   justify-content: flex-start;
   align-items: center;
   border: 5px solid #9999e1;

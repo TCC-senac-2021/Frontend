@@ -14,11 +14,11 @@ function Privacy () {
                   </div>
                   <ul>
                         <li> 1. Dados de fornecedores </li>
-                        <span class="text">Ao utilizar os Serviços do Converta, nossos parceiros concordam em agir com o consentimento de seus clientes para a utilização dos dados pessoais deles pelo Converta.</span>
+                        <span className="text">Ao utilizar os Serviços do Converta, nossos parceiros concordam em agir com o consentimento de seus clientes para a utilização dos dados pessoais deles pelo Converta.</span>
                         <li> 2. Dados de parceiros </li>
-                        <span class="text">São coletados seu nome; nome da empresa; identificadores de redes sociais; número(s) de telefone; endereço; e-mail...</span>
+                        <span className="text">São coletados seu nome; nome da empresa; identificadores de redes sociais; número(s) de telefone; endereço; e-mail...</span>
                         <li> 3. Dados de cookies e de navegação </li>
-                        <span class="text">Um cookie é um arquivo de dados que pode conter um identificador único. Os cookies são enviados por um site para o seu navegador e armazenados em seu dispositivo. Nós atribuímos um cookie diferente para cada dispositivo que acessa nosso site. Utilizamos cookies para reconhecer o seu dispositivo e oferecer uma experiência personalizada em nossos sites ou Serviços, podendo ser utilizado como parte de nossos Serviços ou de parceiros.</span>
+                        <span className="text">Um cookie é um arquivo de dados que pode conter um identificador único. Os cookies são enviados por um site para o seu navegador e armazenados em seu dispositivo. Nós atribuímos um cookie diferente para cada dispositivo que acessa nosso site. Utilizamos cookies para reconhecer o seu dispositivo e oferecer uma experiência personalizada em nossos sites ou Serviços, podendo ser utilizado como parte de nossos Serviços ou de parceiros.</span>
                   </ul>
             </div>
 	);

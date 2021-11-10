@@ -5,6 +5,7 @@ import './index.css';
 
 import Home from '../views/Home/Home';
 import Privacy from '../views/Privacy/Privacy';
+import Coupon from '../views/Coupon/Coupon';
 
 
 function Routes () {
@@ -13,6 +14,7 @@ function Routes () {
           <Switch>
               <Route path="/" exact component={Home}/>
               <Route path="/privacy" exact component={Privacy}/>
+              <Route path="/coupon" exact component={Coupon}/>
           </Switch>
       </BrowserRouter> 
   );

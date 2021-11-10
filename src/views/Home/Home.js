@@ -46,8 +46,8 @@ const Home = () => {
 			{showAvatar ? (
 				<div className='avatar fadein'>
 						{ client.map((clients, index) => ( /* // retirar o indice e fa\er a validaÃ§Ã£o depois	 */
-							index === 0 && 
-							<div className="bubble active"> Olá, {clients.nome.split(' ').slice(-1).join(' ')}. <br/>Clique aqui para jogar!</div>
+							index === 1 &&  // gambis pra pegar id
+							<div key="{index}" className="bubble active"> Olá, {clients.nome.split(' ').slice(-1).join(' ')}. <br/>Clique aqui para jogar!</div>
 							))
 						}	
 						<button type="submit"onClick={handleClick}>
