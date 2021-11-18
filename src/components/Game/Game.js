@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner';
 import Api from  '../../service/api';
 import './Game.css';
 
+
 function Game () {
 
 	const [questions, setQuestions] =  useState([]);
@@ -11,8 +12,6 @@ function Game () {
 	const [showScore, setShowScore] = useState(false);
 	const [loader, setLoader ] = useState(true);
 	const [resposta, setResposta] = useState([]);
-
-	const campain = new URLSearchParams(window.location.search).get('campanha');
 
 	const counQuestions = [1,2,3,4]
 	
@@ -35,12 +34,14 @@ function Game () {
 				console.log(response.data)
 				setShowScore(true);
 			})
-			e.preventDefault();
+			
 		}
 	};
 	
 	useEffect(() => { 
 
+		const campain = new URLSearchParams(window.location.search).get('campanha');
+		
 		async function loadQuestions(){
 			await Api.get(`/enviopergunta/${campain}`,{
 			}).then(response => {
@@ -50,7 +51,7 @@ function Game () {
 				 console.log(response.data.error)
 			})
 		}
-		
+
 		loadQuestions();
 	}, [])
 
