@@ -1,4 +1,4 @@
-import React , { useState, useEffect, Redirect } from 'react';
+import React , { useState, useEffect } from 'react';
 import RobotIconWhite from '../../assets/robot_form.png';
 import Loader from 'react-loader-spinner';
 import Api from  '../../service/api';
