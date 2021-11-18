@@ -17,7 +17,12 @@ body {
     font-family: "Verdana", cursive, sans-serif;
     color: #ffffff;
   }
-  
+
+  button {
+    border: transparent;
+    padding: 5px 10px 5px 10px;
+    background-color: transparent;
+  }
   
 
   

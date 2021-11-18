@@ -1,5 +1,4 @@
-import React , { useState, useEffect } from 'react';
-import { Redirect } from "react-router-dom";
+import React , { useState, useEffect, Redirect } from 'react';
 import RobotIconWhite from '../../assets/robot_form.png';
 import Loader from 'react-loader-spinner';
 import Api from  '../../service/api';
@@ -8,60 +7,51 @@ import './Game.css';
 
 function Game () {
 
-	const [redirect] = useState(false);
 	const [questions, setQuestions] =  useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
 	const [loader, setLoader ] = useState(true);
+	const [resposta, setResposta] = useState([]);
 
-	const [answer, setAnswer] = useState();
+	const campain = new URLSearchParams(window.location.search).get('campanha');
 
-	
-
-
-	// const [alternative1, setAlternative1] = useState("");
-    // const [alternative2, setAlternative2] = useState("");
-    // const [alternative3, setAlternative3] = useState("");
-	// const [alternative4, setAlternative4] = useState("");
-	
 	const counQuestions = [1,2,3,4]
 	
 	async function handleAnswerOptionClick (e) {
+		e.preventDefault();
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < counQuestions.length ) {
 			setCurrentQuestion(nextQuestion);
 			await Api.post(`/conferepergunta`,{
-				id : currentQuestion + 1, // full gambis
-				answer
+				id : currentQuestion + 1,
+				resposta 
 			}).then(response => {
 				console.log(response.data)
 			})
 		} else {
 			await Api.post(`/conferepergunta`,{
-				id : currentQuestion + 1, // full gambis
-				answer
+				id : 4, 
+				resposta
 			}).then(response => {
 				console.log(response.data)
+				setShowScore(true);
 			})
-			setShowScore(true);
+			e.preventDefault();
 		}
 	};
+
+	async function loadQuestions(){
+		await Api.get(`/enviopergunta/${campain}`,{
+		}).then(response => {
+			setQuestions(response.data);
+			setLoader(false);
+		}).catch(response => {
+			 console.log(response.data.error)
+		})
+	}
 	
 	useEffect(() => { 
-
-		async function loadQuestions(){
-			await Api.post(`/enviopergunta`,{
-				idCampanha : 1,  /** gambiarra pra pegar o id por enquanto */
-			}).then(response => {
-				setQuestions(response.data);
-				setLoader(false);
-			}).catch(response => {
-				console.log(response.data.error)
-			})
-		}
-
 		loadQuestions();
-		
 	}, [])
 
 
@@ -70,7 +60,6 @@ function Game () {
 	loader ? (  <Loader type="Circles" height={150} width={150}/>
 	) : ( <> 
     <div className='content'>
-	{redirect && <Redirect to="/coupon" /> }
     {showScore ? (
         <div className='score-section'>
             ??
@@ -94,11 +83,11 @@ function Game () {
 					questions.map((question, index) => (
 						question.id === currentQuestion + 1 &&
 						<>
-						<form className='answer-section' key={index} value={question.id} onSubmit={handleAnswerOptionClick}> 
-							<button type="submit" value={question.alternativa1} onChange={e => setAnswer(e.target.value)}>{question.alternativa1}</button>
-							<button type="submit" value={question.alternativa2} onChange={e => setAnswer(e.target.value)}>{question.alternativa2}</button>
-							<button type="submit" value={question.alternativa3} onChange={e => setAnswer(e.target.value)}>{question.alternativa3}</button>
-							<button type="submit" value={question.alternativa4} onChange={e => setAnswer(e.target.value)}>{question.alternativa4}</button>
+						<form className='answer-section' title="game" key={index} value={question.id} onSubmit={handleAnswerOptionClick}> 
+							<button className="button" type="submit" value={question.alternativa1} onClick={e => setResposta(e.target.value)}>{question.alternativa1}</button>
+							<button className="button" type="submit" value={question.alternativa2} onClick={e => setResposta(e.target.value)}>{question.alternativa2}</button>
+							<button className="button" type="submit" value={question.alternativa3} onClick={e => setResposta(e.target.value)}>{question.alternativa3}</button>
+							<button className="button" type="submit" value={question.alternativa4} onClick={e => setResposta(e.target.value)}>{question.alternativa4}</button>
             			</form>
 						</>
 					))

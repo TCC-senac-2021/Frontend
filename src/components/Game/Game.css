@@ -46,7 +46,7 @@
       margin: 0 auto;
       flex-direction: column;
     }
-    button {
+    .button {
       margin-bottom: 12px;
       font-size: 12px;
     }

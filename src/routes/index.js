@@ -9,8 +9,10 @@ import Coupon from '../views/Coupon/Coupon';
 
 
 function Routes () {
+    
   return (
       <BrowserRouter>
+      
           <Switch>
               <Route path="/" exact component={Home}/>
               <Route path="/privacy" exact component={Privacy}/>

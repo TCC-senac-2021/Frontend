@@ -1,12 +1,15 @@
 import React from 'react';
 import { VscArrowLeft } from "react-icons/vsc";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './Privacy.css';
 
 function Privacy () {
+
+      const history = useHistory();
+      
 	return (
             <div className="content">
-                  <Link to="/" className="linkBack"><VscArrowLeft/> Voltar pra Home</Link>
+                <button onClick={() => history.goBack()} className="linkBack"><VscArrowLeft/> Voltar</button>
                   <h1 className="title">POLÍTICA DE COLETA DE DADOS CONVERTA</h1>
                   <div className="text">
                         Nós estamos preocupados com a forma como suas informações são usadas e compartilhadas, agradecemos sua confiança de que cuidaremos delas com atenção e sensatez. O presente documento demonstra como tratamos suas informações pessoais obtidas em web sites, serviços, lojas, aplicativos e parceiros.

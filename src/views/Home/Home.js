@@ -10,8 +10,10 @@ import Game from '../../components/Game/Game';
 
 
 const Home = () => {
+	
+	const id = new URLSearchParams(window.location.search).get('id');
 
-	const [client, setClient] =  useState([]);
+	const [name, setName] = useState();
 	const [loader, setLoader ] = useState(true);
 	const [showElement, setShowElement] = useState(false);
 	const [showAvatar, setShowAvatar] = useState(true);
@@ -22,37 +24,30 @@ const Home = () => {
 		e.preventDefault();
 	};
 
-	useEffect(() => { // useEffect Ã© chamado quando inicia a tela
+	async function loadUser(){
+		await Api.get(`/start/${id}`)
+		.then(response => {
+			setName(response.data.nome)
+			setLoader(false);
+		})
+	}
 
-		async function loadClient(){
-			await Api.get(`/usuarios`)// interpolaï¿½ï¿½o de acento
-			.then(response => {
-				setClient(response.data);
-				setLoader(false);
-				
-			})
-		}
-
-		loadClient();
-
-	}, [])
-	
+	useEffect(() => { 
+		loadUser();
+	})
 	
 	return  (
+		
 		<div className="content">
   			<Header />
 			{ loader ? (  <Loader type="Circles" height={150} width={150}/>
 			) : ( <> 
 			{showAvatar ? (
 				<div className='avatar fadein'>
-						{ client.map((clients, index) => ( /* // retirar o indice e fa\er a validaÃ§Ã£o depois	 */
-							index === 1 &&  // gambis pra pegar id
-							<div key="{index}" className="bubble active"> Olá, {clients.nome.split(' ').slice(-1).join(' ')}. <br/>Clique aqui para jogar!</div>
-							))
-						}	
-						<button type="submit"onClick={handleClick}>
-							<img src={RobotIconColor} alt="Avatar" className="pulse" />
-						</button>			
+					<div key="{index}" className="bubble active"> Olá, {name.split(' ').slice(-1).join(' ')}. <br/>Clique aqui para jogar!</div>
+					<button type="submit"onClick={handleClick}>
+						<img src={RobotIconColor} alt="Avatar" className="pulse" />
+					</button>			
 				</div>
 				) : ( null )}
 				{ showElement ? (
@@ -64,6 +59,6 @@ const Home = () => {
 	);
 }
 
-// cliente vai na url do site
+//
 
 export default Home;

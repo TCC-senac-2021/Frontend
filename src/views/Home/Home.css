@@ -1,5 +1,5 @@
 
-button {
+.button {
   width: 100%;
   font-size: 14px;
   color: #ffffff;
@@ -14,15 +14,15 @@ button {
   text-transform: uppercase;
 }
 
-button:hover {
+.button:hover {
   background-color: #555e7d;
 }
 
-button:focus {
+.button:focus {
   outline: none;
 }
 
-button svg {
+.button svg {
   margin-right: 5px;
 }
 
@@ -45,10 +45,9 @@ form {
     display: flex;
     flex-direction: column;
     font-size: 15px;
-    width: 50%;
     padding-top: 30px;
 }
-.avatar button:hover {
+.avatar button :hover {
     border: none;
     background-color: transparent;
 }
