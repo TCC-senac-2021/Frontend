@@ -4,7 +4,6 @@ import Loader from 'react-loader-spinner';
 import Api from  '../../service/api';
 import './Game.css';
 
-
 function Game () {
 
 	const [questions, setQuestions] =  useState([]);
