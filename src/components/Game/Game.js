@@ -38,18 +38,19 @@ function Game () {
 			e.preventDefault();
 		}
 	};
-
-	async function loadQuestions(){
-		await Api.get(`/enviopergunta/${campain}`,{
-		}).then(response => {
-			setQuestions(response.data);
-			setLoader(false);
-		}).catch(response => {
-			 console.log(response.data.error)
-		})
-	}
 	
 	useEffect(() => { 
+
+		async function loadQuestions(){
+			await Api.get(`/enviopergunta/${campain}`,{
+			}).then(response => {
+				setQuestions(response.data);
+				setLoader(false);
+			}).catch(response => {
+				 console.log(response.data.error)
+			})
+		}
+		
 		loadQuestions();
 	}, [])
 
