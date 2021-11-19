@@ -16,6 +16,14 @@
   min-height: 200px;
 }
 
+.coupon {
+  border: 2px dotted #bbb;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 10px;
+}
+
 /* QUESTION/TIMER/LEFT SECTION */
 .question-section {
   width: 100%;
