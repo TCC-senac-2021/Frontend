@@ -5,20 +5,20 @@ import { Chart } from "react-google-charts";
 import './App.css';
  */
 function App() {
-  const [options, setOptions] = useState({
+  const [options/* , setOptions */] = useState({
     title: 'Acertos perguntas'
   });
-  const [optionsBar, setOptionsBar] = useState({
+  const [optionsBar/* , setOptionsBar */] = useState({
     title: 'E-mails Enviados'
   });
-  const [data, setData] = useState([
+  const [data/* , setData */] = useState([
     ['Pergunta', 'Quantidade de Acertos'],
     ['Pergunta 1', 100],
     ['Pergunta 2', 80],
     ['Pergunta 3', 50],
     ['Pergunta 4', 50],
   ]);
-  const [dataBar, setDataBar] = useState([
+  const [dataBar/* , setDataBar */] = useState([
     ['E-mails', '50', '10'],
     ['Sucesso, Erros', 50, 10],
 
