@@ -9,7 +9,7 @@ import './Game.css';
 function Game () {
 
 	const campain = new URLSearchParams(window.location.search).get('campanha');
-	const id = new URLSearchParams(window.location.search).get('id');
+	const idUser = new URLSearchParams(window.location.search).get('id');
 	
 	const [questions, setQuestions] =  useState([]);
 	const [answer, setAwnser] = useState(0);
@@ -18,6 +18,12 @@ function Game () {
 	const [loader, setLoader ] = useState(true);
 	const [resposta, setResposta] = useState([]);
 	const [coupon, setCoupon] = useState();
+
+	const percent1 = '5%';
+	const percent2 = '5%';
+	const percent3 = '10%';
+	const percent4 = '15%';
+
 
 	const counQuestions = [1,2,3,4]
 	
@@ -28,8 +34,11 @@ function Game () {
 			setCurrentQuestion(nextQuestion);
 			await Api.post(`/conferepergunta`,{
 				id : currentQuestion + 1,
-				resposta 
+				resposta, 
+				idUser : idUser,
+				nomeCampanha : campain,
 			}).then(response => {
+				console.log(response.data)
 				if(response.data === true) {
 					setAwnser(answer + 1);
 				}
@@ -52,7 +61,7 @@ function Game () {
 
 	async function loadCoupon(){
 		await Api.post(`/enviaCupom`,{
-			id : id,
+			id : idUser,
 			nomeCampanha : campain,
 			nroAcertos : answer
 		}).then(response => {
@@ -84,9 +93,15 @@ function Game () {
     {showScore ? (
         <div className='app fadein'>
 			<div className='question-text'>
-			Parabéns, você acertou { answer } de 4 questões, seu cupom é este: <br/>
-			<div className="coupon">{ coupon }</div>
+			{answer > 0 ? 'Você acertou ' + answer +' de 4 questões' : 'Infelizmente você não acertou nenhuma resposta, mas não fique triste você vai ganhar um cupom por ter participado do jogo.'} <br/>
+			Ganhou {answer === 0 ? percent1 : answer === 1 ? percent1 : answer === 2 ? percent2 : answer === 3 ? percent3 : answer === 4 ? percent4 : '' } de desconto, seu cupom é esse:
+			<div className="coupon">{ coupon }</div><br/>
+
+			Acesse o link para dar um feedback sobre o jogo: 
 			{/* <QRCode width="100" value="hey" /> */}
+			<a className="link" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSd3NYdzfT9Gdk2tVYxQBPvda7rbIV3EniJmZT23A-Fhn-7hnQ/viewform" title="formulário google" target="_blank">
+				Questionário
+			</a>
 			</div>
         </div>
     ) : (
