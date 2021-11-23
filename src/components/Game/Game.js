@@ -35,8 +35,8 @@ function Game () {
 			await Api.post(`/conferepergunta`,{
 				id : currentQuestion + 1,
 				resposta, 
-				/* idUser : idUser,
-				nomeCampanha : campain, */
+				idUser,
+				campain
 			}).then(response => {
 				console.log(response.data)
 				if(response.data === true) {
