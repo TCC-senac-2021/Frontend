@@ -8,8 +8,8 @@ import './Game.css';
 
 function Game () {
 
-	const campanha = new URLSearchParams(window.location.search).get('campanha');
-	const idUsuario = new URLSearchParams(window.location.search).get('id');
+	const campain = new URLSearchParams(window.location.search).get('campanha');
+	const idUser = new URLSearchParams(window.location.search).get('id');
 	
 	const [questions, setQuestions] =  useState([]);
 	const [answer, setAwnser] = useState(0);
@@ -35,8 +35,8 @@ function Game () {
 			await Api.post(`/conferepergunta`,{
 				id : currentQuestion + 1,
 				resposta, 
-				idUsuario,
-				campanha
+				idUsuario: idUser,
+				nomeCampanha: campain
 			}).then(response => {
 				console.log(response.data)
 				if(response.data === true) {
@@ -61,8 +61,8 @@ function Game () {
 
 	async function loadCoupon(){
 		await Api.post(`/enviaCupom`,{
-			id : idUsuario,
-			nomeCampanha : campanha,
+			id : idUser,
+			nomeCampanha : campain,
 			nroAcertos : answer
 		}).then(response => {
 			setCoupon(response.data)
@@ -71,10 +71,10 @@ function Game () {
 	
 	useEffect(() => { 
 
-		const campanha = new URLSearchParams(window.location.search).get('campanha');
+		const campain = new URLSearchParams(window.location.search).get('campanha');
 
 		async function loadQuestions(){
-			await Api.get(`/enviopergunta/${campanha}`,{
+			await Api.get(`/enviopergunta/${campain}`,{
 			}).then(response => {
 				setQuestions(response.data);
 				setLoader(false);
