@@ -112,7 +112,7 @@ function Game () {
 						<span>Pergunta {currentQuestion + 1}</span>
 					</div>
 						{ questions.map((question) => (
-							question.id === currentQuestion + 1 &&
+							question.numeroPergunta === currentQuestion + 1 &&
 								<div className='question-text'>{question.textoPergunta}</div>
 								
 							))
@@ -120,9 +120,9 @@ function Game () {
 				</div>
 				{
 					questions.map((question, index) => (
-						question.id === currentQuestion + 1 &&
+						question.numeroPergunta === currentQuestion + 1 &&
 						<>
-						<form className='answer-section fade' title="game" key={index} value={question.id} onSubmit={handleAnswerOptionClick}> 
+						<form className='answer-section fade' title="game" key={index} value={question.numeroPergunta} onSubmit={handleAnswerOptionClick}> 
 							<button className="button" type="submit" value={question.alternativa1} onClick={e => setResposta(e.target.value)}>{question.alternativa1}</button>
 							<button className="button" type="submit" value={question.alternativa2} onClick={e => setResposta(e.target.value)}>{question.alternativa2}</button>
 							<button className="button" type="submit" value={question.alternativa3} onClick={e => setResposta(e.target.value)}>{question.alternativa3}</button>
