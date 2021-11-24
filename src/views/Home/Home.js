@@ -11,12 +11,16 @@ import Game from '../../components/Game/Game';
 
 const Home = () => {
 	
-	const id = new URLSearchParams(window.location.search).get('id');
+/* 	const campain = new URLSearchParams(window.location.search).get('campanha');
 
+	const [setUser] = useState(); */
 	const [name, setName] = useState();
+	// const [category, setCategory] = useState();
 	const [loader, setLoader ] = useState(true);
 	const [showElement, setShowElement] = useState(false);
 	const [showAvatar, setShowAvatar] = useState(true);
+	// const [showInactive, setShowInactive] = useState(true);
+
 
 	const handleClick = (e) => {
 		setShowElement(true);
@@ -24,17 +28,40 @@ const Home = () => {
 		e.preventDefault();
 	};
 
-	async function loadUser(){
-		await Api.get(`/start/${id}`)
-		.then(response => {
-			setName(response.data.nome)
-			setLoader(false);
+	// const handleClick = (e) => {
+	// 	if(category === 'clienteInativo'){
+	// 		setShowAvatar(false);
+	// 		console.log('teste')
+	// 	} else {
+	// 		setShowElement(true);
+	// 		setShowAvatar(false);
+	// 		e.preventDefault();
+	// 	}
+	// };
+
+	/* async function start(){
+		await Api.post(`/start`,{
+			nomeCampanha : campain
+		}).then(response => {
+			console.log(response.data)
+			setUser(response.data)
 		})
-	}
+	} */
 
 	useEffect(() => { 
+		const idUser = new URLSearchParams(window.location.search).get('id'); 
+
+		async function loadUser(){
+		await Api.post(`/start`,{
+		id : idUser
+			}).then(response => {
+				//(response.data.categoria)
+				setName(response.data.nome)
+				setLoader(false); 
+			})
+		}
 		loadUser();
-	})
+	}, [])
 	
 	return  (
 		

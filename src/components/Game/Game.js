@@ -24,7 +24,6 @@ function Game () {
 	const percent3 = '10%';
 	const percent4 = '15%';
 
-
 	const counQuestions = [1,2,3,4]
 	
 	async function handleAnswerOptionClick (e) {
