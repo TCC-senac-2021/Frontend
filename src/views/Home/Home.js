@@ -11,42 +11,16 @@ import Game from '../../components/Game/Game';
 
 const Home = () => {
 	
-/* 	const campain = new URLSearchParams(window.location.search).get('campanha');
-
-	const [setUser] = useState(); */
 	const [name, setName] = useState();
-	// const [category, setCategory] = useState();
 	const [loader, setLoader ] = useState(true);
 	const [showElement, setShowElement] = useState(false);
 	const [showAvatar, setShowAvatar] = useState(true);
-	// const [showInactive, setShowInactive] = useState(true);
-
 
 	const handleClick = (e) => {
 		setShowElement(true);
 		setShowAvatar(false);
 		e.preventDefault();
 	};
-
-	// const handleClick = (e) => {
-	// 	if(category === 'clienteInativo'){
-	// 		setShowAvatar(false);
-	// 		console.log('teste')
-	// 	} else {
-	// 		setShowElement(true);
-	// 		setShowAvatar(false);
-	// 		e.preventDefault();
-	// 	}
-	// };
-
-	/* async function start(){
-		await Api.post(`/start`,{
-			nomeCampanha : campain
-		}).then(response => {
-			console.log(response.data)
-			setUser(response.data)
-		})
-	} */
 
 	useEffect(() => { 
 		const idUser = new URLSearchParams(window.location.search).get('id'); 
@@ -71,7 +45,7 @@ const Home = () => {
 			) : ( <> 
 			{showAvatar ? (
 				<div className='avatar fadein'>
-					<div key="{index}" className="bubble active"> Olá, {name.split(' ').slice(-1).join(' ')}. <br/>Clique aqui para jogar!</div>
+					<div key="{index}" className="bubble active"> Olá, {name.split(' ', 1).join(' ')}. <br/>Clique aqui para jogar!</div>
 					<button type="submit"onClick={handleClick}>
 						<img src={RobotIconColor} alt="Avatar" className="pulse" />
 					</button>			

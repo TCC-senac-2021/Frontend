@@ -24,7 +24,7 @@ function Game () {
 	const percent3 = '10%';
 	const percent4 = '15%';
 
-	const counQuestions = [1,2,3,4]
+	const counQuestions = [0,1,2,3]
 	
 	async function handleAnswerOptionClick (e) {
 		e.preventDefault();
@@ -32,7 +32,7 @@ function Game () {
 		if (nextQuestion < counQuestions.length ) {
 			setCurrentQuestion(nextQuestion);
 			await Api.post(`/conferepergunta`,{
-				id : currentQuestion + 1,
+				id : questions[currentQuestion].id,
 				resposta, 
 				idUsuario: idUser,
 				nomeCampanha: campain
@@ -45,7 +45,7 @@ function Game () {
 			})
 		} else {
 			await Api.post(`/conferepergunta`,{
-				id : 4, 
+				id : questions[3].id, 
 				resposta
 			}).then(response => {
 				if(response.data === true) {
