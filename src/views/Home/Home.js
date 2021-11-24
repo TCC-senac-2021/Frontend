@@ -15,6 +15,27 @@ const Home = () => {
 	const [loader, setLoader ] = useState(true);
 	const [showElement, setShowElement] = useState(false);
 	const [showAvatar, setShowAvatar] = useState(true);
+	// const [showInactive, setShowInactive] = useState(true);
+	// const [setUser] = useState();
+	// const handleClick = (e) => {
+	// 	if(category === 'clienteInativo'){
+	// 		setShowAvatar(false);
+	// 		console.log('teste')
+	// 	} else {
+	// 		setShowElement(true);
+	// 		setShowAvatar(false);
+	// 		e.preventDefault();
+	// 	}
+	// };
+
+	/* async function start(){
+		await Api.post(`/start`,{
+			nomeCampanha : campain
+		}).then(response => {
+			console.log(response.data)
+			setUser(response.data)
+		})
+	} */
 
 	const handleClick = (e) => {
 		setShowElement(true);

@@ -92,7 +92,7 @@ function Game () {
     {showScore ? (
         <div className='app fadein'>
 			<div className='question-text'>
-			{answer > 0 ? 'Você acertou ' + answer +' de 4 questões' : 'Infelizmente você não acertou nenhuma resposta, mas não fique triste você vai ganhar um cupom por ter participado do jogo.'} <br/>
+			{answer >= 0 ? 'Você acertou ' + answer +' de 4 questões' : 'Infelizmente você não acertou nenhuma resposta, mas não fique triste você vai ganhar um cupom por ter participado do jogo.'} <br/>
 			Ganhou {answer === 0 ? percent1 : answer === 1 ? percent1 : answer === 2 ? percent2 : answer === 3 ? percent3 : answer === 4 ? percent4 : '' } de desconto, seu cupom é esse:
 			<div className="coupon">{ coupon }</div><br/>
 

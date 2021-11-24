@@ -7,11 +7,12 @@
   border-radius: 26.5px;
   display: flex;
   padding: 5px 10px 5px 10px;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   border: 5px solid #9999e1;
   cursor: pointer;
   text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
 .button:hover {
@@ -63,10 +64,7 @@ form {
 }
 
 .avatar-form {
-  height: 50px;
-  margin: 0 auto;
-  display: table;
-  margin-right: 15px;
+  height: 40px; 
 }
 
 svg {
