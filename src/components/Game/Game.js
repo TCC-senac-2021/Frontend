@@ -52,7 +52,7 @@ function Game () {
 			}).then(response => {
 				console.log(response.data)
 				if(response.data === true) {
-					setAwnser(answer + 1);
+					setAwnser(4);
 				}
 				loadCoupon();
 				setShowScore(true);
