@@ -12,6 +12,7 @@
     border: none;
     width: auto;
     text-transform: capitalize;
+    cursor: pointer;
 }
 
 h1 {

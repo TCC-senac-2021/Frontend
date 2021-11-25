@@ -33,6 +33,7 @@ const Home = () => {
 		id : idUser,
 		nomeCampanha : campain
 			}).then(response => {
+				console.log(response.data)
 				if(response.data.cupom) {
 					setNumberCoupon(response.data.cupom)
 					setLoader(false); 
@@ -58,6 +59,10 @@ const Home = () => {
 				<div className='question-text'>
 					Identificamos que você já jogou, seu cupom é:
 				<div className="coupon">{ coupon }</div><br/>
+				Acesse o link para dar um feedback sobre o jogo: 
+				<a className="link" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSd3NYdzfT9Gdk2tVYxQBPvda7rbIV3EniJmZT23A-Fhn-7hnQ/viewform" title="formulário google" target="_blank">
+					Questionário
+				</a>
 				</div>
         	</div>
 			) : ( null )}

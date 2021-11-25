@@ -75,6 +75,7 @@ function Game () {
 		async function loadQuestions(){
 			await Api.get(`/enviopergunta/${campain}`,{
 			}).then(response => {
+				console.log(response.data)
 				setQuestions(response.data);
 				setLoader(false);
 			}).catch(response => {
@@ -113,7 +114,7 @@ function Game () {
 					</div>
 						{ questions.map((question) => (
 							question.numeroPergunta === currentQuestion + 1 &&
-								<div className='question-text'>{question.textoPergunta}</div>
+								<div className='question-text' title="text-question">{question.textoPergunta}</div>
 								
 							))
 						}
