@@ -12,7 +12,8 @@ function Game () {
 	const idUser = new URLSearchParams(window.location.search).get('id');
 	
 	const [questions, setQuestions] =  useState([]);
-	const [answer, setAwnser] = useState(0);
+	const [answer, setAwnser] = useState(1);
+	const [x, setX] =  useState(0)
     const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
 	const [loader, setLoader ] = useState(true);
@@ -40,6 +41,7 @@ function Game () {
 				console.log(response.data)
 				if(response.data === true) {
 					setAwnser(answer + 1);
+					setX(x + 1);
 				}
 				
 			})
@@ -52,7 +54,8 @@ function Game () {
 			}).then(response => {
 				console.log(response.data)
 				if(response.data === true) {
-					setAwnser(4);
+					setAwnser(answer + 1);
+					setX(x + 1);
 				}
 				loadCoupon();
 				setShowScore(true);
@@ -68,6 +71,7 @@ function Game () {
 			nroAcertos : answer
 		}).then(response => {
 			setCoupon(response.data)
+			console.log(response.data)
 		})
 	}
 	
@@ -96,8 +100,8 @@ function Game () {
     {showScore ? (
         <div className='app fadein'>
 			<div className='question-text'>
-			{answer >= 0 ? 'Você acertou ' + answer +' de 4 questões' : 'Infelizmente você não acertou nenhuma resposta, mas não fique triste você vai ganhar um cupom por ter participado do jogo.'} <br/>
-			Ganhou {answer === 0 ? percent1 : answer === 1 ? percent1 : answer === 2 ? percent2 : answer === 3 ? percent3 : answer === 4 ? percent4 : '' } de desconto, seu cupom é esse:
+			{x >= 0 ? 'Você acertou ' + x +' de 4 questões' : 'Infelizmente você não acertou nenhuma resposta, mas não fique triste você vai ganhar um cupom por ter participado do jogo.'} <br/>
+			Ganhou {x === 0 ? percent1 : x === 1 ? percent1 : x === 2 ? percent2 : x === 3 ? percent3 : x === 4 ? percent4 : '' } de desconto, seu cupom é esse:
 			<div className="coupon">{ coupon }</div><br/>
 
 			Acesse o link para dar um feedback sobre o quiz: 
