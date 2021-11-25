@@ -12,47 +12,36 @@ import Game from '../../components/Game/Game';
 const Home = () => {
 	
 	const [name, setName] = useState();
+	const [coupon, setNumberCoupon] = useState(true);
 	const [loader, setLoader ] = useState(true);
 	const [showElement, setShowElement] = useState(false);
-	const [showAvatar, setShowAvatar] = useState(true);
-	// const [showInactive, setShowInactive] = useState(true);
-	// const [setUser] = useState();
-	// const handleClick = (e) => {
-	// 	if(category === 'clienteInativo'){
-	// 		setShowAvatar(false);
-	// 		console.log('teste')
-	// 	} else {
-	// 		setShowElement(true);
-	// 		setShowAvatar(false);
-	// 		e.preventDefault();
-	// 	}
-	// };
-
-	/* async function start(){
-		await Api.post(`/start`,{
-			nomeCampanha : campain
-		}).then(response => {
-			console.log(response.data)
-			setUser(response.data)
-		})
-	} */
-
+	const [showAvatar, setShowAvatar] = useState(false);
+	const [showcoupon, setCounPon] = useState(true);
+	
 	const handleClick = (e) => {
 		setShowElement(true);
 		setShowAvatar(false);
-		e.preventDefault();
+		e.preventDefault();	 	
 	};
 
 	useEffect(() => { 
 		const idUser = new URLSearchParams(window.location.search).get('id'); 
+		const campain = new URLSearchParams(window.location.search).get('campanha');
 
 		async function loadUser(){
 		await Api.post(`/start`,{
-		id : idUser
+		id : idUser,
+		nomeCampanha : campain
 			}).then(response => {
-				//(response.data.categoria)
-				setName(response.data.nome)
-				setLoader(false); 
+				if(response.data.cupom) {
+					setNumberCoupon(response.data.cupom)
+					setLoader(false); 
+				} else {
+					setName(response.data.nome)
+					setShowAvatar(true);
+					setLoader(false); 
+					setCounPon(false);	
+				}
 			})
 		}
 		loadUser();
@@ -64,6 +53,14 @@ const Home = () => {
   			<Header />
 			{ loader ? (  <Loader type="Circles" height={150} width={150}/>
 			) : ( <> 
+			{showcoupon ? (
+			<div className='app fadein'>
+				<div className='question-text'>
+					Identificamos que você já jogou, seu cupom é:
+				<div className="coupon">{ coupon }</div><br/>
+				</div>
+        	</div>
+			) : ( null )}
 			{showAvatar ? (
 				<div className='avatar fadein'>
 					<div key="{index}" className="bubble active"> Olá, {name.split(' ', 1).join(' ')}. <br/>Clique aqui para jogar!</div>
@@ -71,7 +68,7 @@ const Home = () => {
 						<img src={RobotIconColor} alt="Avatar" className="pulse" />
 					</button>			
 				</div>
-				) : ( null )}
+			) : ( null )}
 				{ showElement ? (
 				<Game />
 			) : ( null )}
