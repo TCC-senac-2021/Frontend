@@ -46,8 +46,11 @@ function Game () {
 		} else {
 			await Api.post(`/conferepergunta`,{
 				id : questions[3].id, 
-				resposta
+				resposta,
+				idUsuario: idUser,
+				nomeCampanha: campain
 			}).then(response => {
+				console.log(response.data)
 				if(response.data === true) {
 					setAwnser(answer + 1);
 				}
@@ -97,7 +100,7 @@ function Game () {
 			Ganhou {answer === 0 ? percent1 : answer === 1 ? percent1 : answer === 2 ? percent2 : answer === 3 ? percent3 : answer === 4 ? percent4 : '' } de desconto, seu cupom é esse:
 			<div className="coupon">{ coupon }</div><br/>
 
-			Acesse o link para dar um feedback sobre o jogo: 
+			Acesse o link para dar um feedback sobre o quiz: 
 			{/* <QRCode width="100" value="hey" /> */}
 			<a className="link" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSd3NYdzfT9Gdk2tVYxQBPvda7rbIV3EniJmZT23A-Fhn-7hnQ/viewform" title="formulário google" target="_blank">
 				Questionário
